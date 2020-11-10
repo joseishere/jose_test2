@@ -1,0 +1,5 @@
+Hello, World! 
+staticArr() took 0.021356 seconds to execute 
+stackArr() took 0.020545 seconds to execute 
+heapArr() took 15.688600 seconds to execute 
+---- Jose Diaz ----
