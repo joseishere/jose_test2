@@ -1,0 +1,528 @@
+
+'1'
+'1' C Char: 			 VALID
+'1' C Float: not VALID
+'1' C Int: 			 VALID
+'1' Java String: 			 VALID
+'1' Operator: not VALID
+'1' Perl Identifier: not VALID
+
+'!'
+'!' C Char: 			 VALID
+'!' C Float: not VALID
+'!' C Int: 			 VALID
+'!' Java String: 			 VALID
+'!' Operator: not VALID
+'!' Perl Identifier: not VALID
+
+"$"
+"$" C Char: 			 VALID
+"$" C Float: not VALID
+"$" C Int: 			 VALID
+"$" Java String: 			 VALID
+"$" Operator: not VALID
+"$" Perl Identifier: not VALID
+
+'\t'
+'\t' C Char: 			 VALID
+'\t' C Float: not VALID
+'\t' C Int: not VALID
+'\t' Java String: 			 VALID
+'\t' Operator: not VALID
+'\t' Perl Identifier: not VALID
+
+'\?'
+'\?' C Char: 			 VALID
+'\?' C Float: not VALID
+'\?' C Int: 			 VALID
+'\?' Java String: 			 VALID
+'\?' Operator: not VALID
+'\?' Perl Identifier: not VALID
+
+'\\'
+'\\' C Char: 			 VALID
+'\\' C Float: not VALID
+'\\' C Int: 			 VALID
+'\\' Java String: 			 VALID
+'\\' Operator: not VALID
+'\\' Perl Identifier: not VALID
+
+'\f'
+'\f' C Char: 			 VALID
+'\f' C Float: not VALID
+'\f' C Int: not VALID
+'\f' Java String: 			 VALID
+'\f' Operator: not VALID
+'\f' Perl Identifier: not VALID
+
+'\XN'
+'\XN' C Char: not VALID
+'\XN' C Float: not VALID
+'\XN' C Int: not VALID
+'\XN' Java String: 			 VALID
+'\XN' Operator: not VALID
+'\XN' Perl Identifier: not VALID
+
+']'
+']' C Char: 			 VALID
+']' C Float: not VALID
+']' C Int: 			 VALID
+']' Java String: 			 VALID
+']' Operator: not VALID
+']' Perl Identifier: not VALID
+
+'n'
+'n' C Char: 			 VALID
+'n' C Float: not VALID
+'n' C Int: 			 VALID
+'n' Java String: 			 VALID
+'n' Operator: not VALID
+'n' Perl Identifier: not VALID
+
+'e"
+'e" C Char: not VALID
+'e" C Float: not VALID
+'e" C Int: 			 VALID
+'e" Java String: 			 VALID
+'e" Operator: not VALID
+'e" Perl Identifier: not VALID
+
+v\'v\'
+v\'v\' C Char: not VALID
+v\'v\' C Float: not VALID
+v\'v\' C Int: not VALID
+v\'v\' Java String: 			 VALID
+v\'v\' Operator: not VALID
+v\'v\' Perl Identifier: not VALID
+
+23.75
+23.75 C Char: not VALID
+23.75 C Float: 			 VALID
+23.75 C Int: 			 VALID
+23.75 Java String: 			 VALID
+23.75 Operator: not VALID
+23.75 Perl Identifier: not VALID
+
+0.59201E1
+0.59201E1 C Char: not VALID
+0.59201E1 C Float: 			 VALID
+0.59201E1 C Int: not VALID
+0.59201E1 Java String: 			 VALID
+0.59201E1 Operator: not VALID
+0.59201E1 Perl Identifier: not VALID
+
+1312221215e-2
+1312221215e-2 C Char: not VALID
+1312221215e-2 C Float: 			 VALID
+1312221215e-2 C Int: not VALID
+1312221215e-2 Java String: 			 VALID
+1312221215e-2 Operator: not VALID
+1312221215e-2 Perl Identifier: not VALID
+
+-2.5e-3
+-2.5e-3 C Char: not VALID
+-2.5e-3 C Float: 			 VALID
+-2.5e-3 C Int: not VALID
+-2.5e-3 Java String: 			 VALID
+-2.5e-3 Operator: not VALID
+-2.5e-3 Perl Identifier: not VALID
+
+15E-4
+15E-4 C Char: not VALID
+15E-4 C Float: 			 VALID
+15E-4 C Int: not VALID
+15E-4 Java String: 			 VALID
+15E-4 Operator: not VALID
+15E-4 Perl Identifier: not VALID
+
+121.0L
+121.0L C Char: not VALID
+121.0L C Float: not VALID
+121.0L C Int: not VALID
+121.0L Java String: 			 VALID
+121.0L Operator: not VALID
+121.0L Perl Identifier: not VALID
+
+122.0F
+122.0F C Char: not VALID
+122.0F C Float: not VALID
+122.0F C Int: not VALID
+122.0F Java String: 			 VALID
+122.0F Operator: not VALID
+122.0F Perl Identifier: not VALID
+
+1x0.0F
+1x0.0F C Char: not VALID
+1x0.0F C Float: not VALID
+1x0.0F C Int: not VALID
+1x0.0F Java String: 			 VALID
+1x0.0F Operator: not VALID
+1x0.0F Perl Identifier: not VALID
+
+.02ef3
+.02ef3 C Char: not VALID
+.02ef3 C Float: not VALID
+.02ef3 C Int: not VALID
+.02ef3 Java String: 			 VALID
+.02ef3 Operator: not VALID
+.02ef3 Perl Identifier: not VALID
+
+0.01ee1
+0.01ee1 C Char: not VALID
+0.01ee1 C Float: not VALID
+0.01ee1 C Int: not VALID
+0.01ee1 Java String: 			 VALID
+0.01ee1 Operator: not VALID
+0.01ee1 Perl Identifier: not VALID
+
+0.5e1lf
+0.5e1lf C Char: not VALID
+0.5e1lf C Float: not VALID
+0.5e1lf C Int: not VALID
+0.5e1lf Java String: 			 VALID
+0.5e1lf Operator: not VALID
+0.5e1lf Perl Identifier: not VALID
+
+69e--2
+69e--2 C Char: not VALID
+69e--2 C Float: not VALID
+69e--2 C Int: not VALID
+69e--2 Java String: 			 VALID
+69e--2 Operator: not VALID
+69e--2 Perl Identifier: not VALID
+
+28
+28 C Char: not VALID
+28 C Float: 			 VALID
+28 C Int: 			 VALID
+28 Java String: not VALID
+28 Operator: not VALID
+28 Perl Identifier: not VALID
+
+4000000024u
+4000000024u C Char: not VALID
+4000000024u C Float: not VALID
+4000000024u C Int: 			 VALID
+4000000024u Java String: 			 VALID
+4000000024u Operator: not VALID
+4000000024u Perl Identifier: not VALID
+
+2000000022l
+2000000022l C Char: not VALID
+2000000022l C Float: 			 VALID
+2000000022l C Int: 			 VALID
+2000000022l Java String: 			 VALID
+2000000022l Operator: not VALID
+2000000022l Perl Identifier: not VALID
+
+4000000000ul
+4000000000ul C Char: not VALID
+4000000000ul C Float: not VALID
+4000000000ul C Int: 			 VALID
+4000000000ul Java String: 			 VALID
+4000000000ul Operator: not VALID
+4000000000ul Perl Identifier: not VALID
+
+9000000000LL
+9000000000LL C Char: not VALID
+9000000000LL C Float: not VALID
+9000000000LL C Int: 			 VALID
+9000000000LL Java String: 			 VALID
+9000000000LL Operator: not VALID
+9000000000LL Perl Identifier: not VALID
+
+900000000001ull
+900000000001ull C Char: not VALID
+900000000001ull C Float: not VALID
+900000000001ull C Int: 			 VALID
+900000000001ull Java String: 			 VALID
+900000000001ull Operator: not VALID
+900000000001ull Perl Identifier: not VALID
+
+024
+024 C Char: not VALID
+024 C Float: 			 VALID
+024 C Int: 			 VALID
+024 Java String: 			 VALID
+024 Operator: not VALID
+024 Perl Identifier: not VALID
+
+04000000024u
+04000000024u C Char: not VALID
+04000000024u C Float: not VALID
+04000000024u C Int: 			 VALID
+04000000024u Java String: 			 VALID
+04000000024u Operator: not VALID
+04000000024u Perl Identifier: not VALID
+
+02000000022l
+02000000022l C Char: not VALID
+02000000022l C Float: 			 VALID
+02000000022l C Int: 			 VALID
+02000000022l Java String: 			 VALID
+02000000022l Operator: not VALID
+02000000022l Perl Identifier: not VALID
+
+04000000000UL
+04000000000UL C Char: not VALID
+04000000000UL C Float: not VALID
+04000000000UL C Int: 			 VALID
+04000000000UL Java String: 			 VALID
+04000000000UL Operator: not VALID
+04000000000UL Perl Identifier: not VALID
+
+044000000000000ll
+044000000000000ll C Char: not VALID
+044000000000000ll C Float: not VALID
+044000000000000ll C Int: 			 VALID
+044000000000000ll Java String: 			 VALID
+044000000000000ll Operator: not VALID
+044000000000000ll Perl Identifier: not VALID
+
+044400000000000001Ull
+044400000000000001Ull C Char: not VALID
+044400000000000001Ull C Float: not VALID
+044400000000000001Ull C Int: 			 VALID
+044400000000000001Ull Java String: 			 VALID
+044400000000000001Ull Operator: not VALID
+044400000000000001Ull Perl Identifier: not VALID
+
+0x2a
+0x2a C Char: not VALID
+0x2a C Float: not VALID
+0x2a C Int: 			 VALID
+0x2a Java String: 			 VALID
+0x2a Operator: not VALID
+0x2a Perl Identifier: not VALID
+
+0XA0000024uu
+0XA0000024uu C Char: not VALID
+0XA0000024uu C Float: not VALID
+0XA0000024uu C Int: not VALID
+0XA0000024uu Java String: 			 VALID
+0XA0000024uu Operator: not VALID
+0XA0000024uu Perl Identifier: not VALID
+
+0x20000022ll
+0x20000022ll C Char: not VALID
+0x20000022ll C Float: not VALID
+0x20000022ll C Int: 			 VALID
+0x20000022ll Java String: 			 VALID
+0x20000022ll Operator: not VALID
+0x20000022ll Perl Identifier: not VALID
+
+0XA0000021uLLL
+0XA0000021uLLL C Char: not VALID
+0XA0000021uLLL C Float: not VALID
+0XA0000021uLLL C Int: not VALID
+0XA0000021uLLL Java String: 			 VALID
+0XA0000021uLLL Operator: not VALID
+0XA0000021uLLL Perl Identifier: not VALID
+
+0x8a000000000000lll
+0x8a000000000000lll C Char: not VALID
+0x8a000000000000lll C Float: not VALID
+0x8a000000000000lll C Int: not VALID
+0x8a000000000000lll Java String: 			 VALID
+0x8a000000000000lll Operator: not VALID
+0x8a000000000000lll Perl Identifier: not VALID
+
+0x8A40000000000010uLLL
+0x8A40000000000010uLLL C Char: not VALID
+0x8A40000000000010uLLL C Float: not VALID
+0x8A40000000000010uLLL C Int: not VALID
+0x8A40000000000010uLLL Java String: 			 VALID
+0x8A40000000000010uLLL Operator: not VALID
+0x8A40000000000010uLLL Perl Identifier: not VALID
+
+"a"
+"a" C Char: 			 VALID
+"a" C Float: not VALID
+"a" C Int: 			 VALID
+"a" Java String: 			 VALID
+"a" Operator: not VALID
+"a" Perl Identifier: not VALID
+
+"string?"
+"string?" C Char: not VALID
+"string?" C Float: not VALID
+"string?" C Int: not VALID
+"string?" Java String: 			 VALID
+"string?" Operator: not VALID
+"string?" Perl Identifier: not VALID
+
+"string\t"
+"string\t" C Char: not VALID
+"string\t" C Float: not VALID
+"string\t" C Int: not VALID
+"string\t" Java String: 			 VALID
+"string\t" Operator: not VALID
+"string\t" Perl Identifier: not VALID
+
+"str\\"
+"str\\" C Char: not VALID
+"str\\" C Float: not VALID
+"str\\" C Int: not VALID
+"str\\" Java String: not VALID
+"str\\" Operator: not VALID
+"str\\" Perl Identifier: not VALID
+
+"stri\\"s"
+"stri\\"s" C Char: not VALID
+"stri\\"s" C Float: not VALID
+"stri\\"s" C Int: not VALID
+"stri\\"s" Java String: 			 VALID
+"stri\\"s" Operator: not VALID
+"stri\\"s" Perl Identifier: not VALID
+
+"st\\"ri\\"s"
+"st\\"ri\\"s" C Char: not VALID
+"st\\"ri\\"s" C Float: not VALID
+"st\\"ri\\"s" C Int: not VALID
+"st\\"ri\\"s" Java String: 			 VALID
+"st\\"ri\\"s" Operator: not VALID
+"st\\"ri\\"s" Perl Identifier: not VALID
+
+"valid??@123"
+"valid??@123" C Char: not VALID
+"valid??@123" C Float: not VALID
+"valid??@123" C Int: not VALID
+"valid??@123" Java String: 			 VALID
+"valid??@123" Operator: not VALID
+"valid??@123" Perl Identifier: not VALID
+
+"val33\\{1!@#$%"
+"val33\\{1!@#$%" C Char: not VALID
+"val33\\{1!@#$%" C Float: not VALID
+"val33\\{1!@#$%" C Int: not VALID
+"val33\\{1!@#$%" Java String: not VALID
+"val33\\{1!@#$%" Operator: not VALID
+"val33\\{1!@#$%" Perl Identifier: not VALID
+
++
++ C Char: not VALID
++ C Float: not VALID
++ C Int: not VALID
++ Java String: not VALID
++ Operator: 			 VALID
++ Perl Identifier: not VALID
+
+-
+- C Char: not VALID
+- C Float: not VALID
+- C Int: not VALID
+- Java String: not VALID
+- Operator: 			 VALID
+- Perl Identifier: not VALID
+
+/
+/ C Char: not VALID
+/ C Float: not VALID
+/ C Int: not VALID
+/ Java String: not VALID
+/ Operator: 			 VALID
+/ Perl Identifier: not VALID
+
+%
+% C Char: not VALID
+% C Float: not VALID
+% C Int: not VALID
+% Java String: not VALID
+% Operator: 			 VALID
+% Perl Identifier: not VALID
+
++-
++- C Char: not VALID
++- C Float: not VALID
++- C Int: 			 VALID
++- Java String: not VALID
++- Operator: not VALID
++- Perl Identifier: not VALID
+
+faill
+faill C Char: not VALID
+faill C Float: not VALID
+faill C Int: not VALID
+faill Java String: 			 VALID
+faill Operator: not VALID
+faill Perl Identifier: not VALID
+
+$$
+$$ C Char: not VALID
+$$ C Float: not VALID
+$$ C Int: 			 VALID
+$$ Java String: not VALID
+$$ Operator: not VALID
+$$ Perl Identifier: not VALID
+
+1
+1 C Char: not VALID
+1 C Float: not VALID
+1 C Int: not VALID
+1 Java String: not VALID
+1 Operator: not VALID
+1 Perl Identifier: not VALID
+
+$var_sas
+$var_sas C Char: not VALID
+$var_sas C Float: not VALID
+$var_sas C Int: not VALID
+$var_sas Java String: 			 VALID
+$var_sas Operator: not VALID
+$var_sas Perl Identifier: 			 VALID
+
+@another2
+@another2 C Char: not VALID
+@another2 C Float: not VALID
+@another2 C Int: not VALID
+@another2 Java String: 			 VALID
+@another2 Operator: not VALID
+@another2 Perl Identifier: 			 VALID
+
+@test
+@test C Char: not VALID
+@test C Float: not VALID
+@test C Int: not VALID
+@test Java String: 			 VALID
+@test Operator: not VALID
+@test Perl Identifier: 			 VALID
+
+%another\s
+%another\s C Char: not VALID
+%another\s C Float: not VALID
+%another\s C Int: not VALID
+%another\s Java String: 			 VALID
+%another\s Operator: not VALID
+%another\s Perl Identifier: not VALID
+
+$test_$
+$test_$ C Char: not VALID
+$test_$ C Float: not VALID
+$test_$ C Int: not VALID
+$test_$ Java String: 			 VALID
+$test_$ Operator: not VALID
+$test_$ Perl Identifier: not VALID
+
+#testt
+#testt C Char: not VALID
+#testt C Float: not VALID
+#testt C Int: not VALID
+#testt Java String: 			 VALID
+#testt Operator: not VALID
+#testt Perl Identifier: not VALID
+
+@test#w
+@test#w C Char: not VALID
+@test#w C Float: not VALID
+@test#w C Int: not VALID
+@test#w Java String: 			 VALID
+@test#w Operator: not VALID
+@test#w Perl Identifier: not VALID
+
+
+ C Char: not VALID
+ C Float: not VALID
+ C Int: not VALID
+ Java String: not VALID
+ Operator: not VALID
+ Perl Identifier: not VALID

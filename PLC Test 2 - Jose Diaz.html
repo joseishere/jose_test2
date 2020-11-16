@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>PLC Test 2 - Jose Diaz</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+  body {
+    padding: 2cm; 
+  }
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style>
+
+
+</head>
+
+<body>
+
+<h2 id="toc_0">PLC Test 2 - Jose Diaz</h2>
+
+<ol>
+<li><p>(20 points) Create code that allows you to create an ordered list of tokens. This code should take in a file as input and process that file for the following lexemes:</p>
+
+<ul>
+<li>All of the code can be found here: <a href="https://github.com/joseishere/jose_test2">https://github.com/joseishere/jose_test2</a></li>
+<li>For all of these problems I wrote them in python and made one file that would read all of my test strings from a file</li>
+<li>I have several files so here is all of the files with their respective code and the last file is the one that combines it all</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-python"># tryFloat.py
+import re
+
+def floatChecker(arr):
+
+    # I did this one with regex after people started to talk about how they used it in the plc group chat
+    # of course all of the other ones I didn&#39;t do with regex bc they were already done
+    # really wish i would have done everything with regex
+    # also I used this website to help me build the regex string
+    # it is really well made and you should donate to help keep it running
+    # the website is : https://regex101.com
+
+    regexBase = r&quot;(-)?(\d)*(.)?\d+(e|E)?(-)?\d(l|L|f|F)?&quot;
+
+    if(re.fullmatch(regexBase, arr)):
+        # print(&#39;is valid&#39;)
+        return True
+    else:
+        return False
+
+def main():
+
+    words = [&quot;23.75&quot;, &quot;0.59201E1&quot;, &quot;1312221215e-2&quot;, &quot;-2.5e-3&quot;, &quot;15E-4&quot;, &quot;121.0L&quot;, &quot;122.0F&quot;, &quot;1x0.0F&quot;, &quot;.02ef3&quot;, &quot;0.01ee1&quot;, &quot;0.5e1lf&quot;, &quot;69e--2&quot;]
+
+    for word in words:
+        if(floatChecker(word)):
+            print(word + &quot; is valid&quot;)
+        else:
+            print(word + &quot; is not valid&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></div>
+
+<ul>
+<li><img src="regexBuilding.png" alt="regex building"></li>
+<li>As you can see I fixed this one because I was getting some test cases that didn&#39;t work. My final program works perfectly though regex is insanely OP.</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-python"># tryInt.py
+hex_vals = {
+    &#39;a&#39;:&#39;a&#39;,
+    &#39;A&#39;:&#39;A&#39;,
+    &#39;b&#39;:&#39;b&#39;,
+    &#39;B&#39;:&#39;B&#39;,
+    &#39;c&#39;:&#39;c&#39;,
+    &#39;C&#39;:&#39;C&#39;,
+    &#39;d&#39;:&#39;d&#39;,
+    &#39;D&#39;:&#39;D&#39;,
+    &#39;e&#39;:&#39;e&#39;,
+    &#39;E&#39;:&#39;E&#39;,
+    &#39;f&#39;:&#39;f&#39;,
+    &#39;F&#39;:&#39;F&#39;,
+}
+def intChecker(arr):
+    foundu = False
+    foundU = False
+    size = len(arr)
+    try:
+        letterFound = arr[2:].find(next(filter(str.isalpha, arr[2:])))
+    except:
+        letterFound = -1
+    #print(letterFound)
+    if(size &lt; 2):
+        return False
+    if(arr[0] == &#39;0&#39; and arr[1] == &#39;x&#39; or arr[1] == &#39;X&#39;):
+
+        xo={
+            &#39;a&#39; : &#39;u&#39;,
+            &#39;b&#39; : &#39;U&#39;,
+            &#39;c&#39; : &#39;l&#39;,
+            &#39;d&#39; : &#39;L&#39;
+        }
+
+        size = len(arr) - 1
+        suffix = [None] * len(arr)
+
+        while(size &gt;= 0):
+            #print(size)
+            if(arr[size] in xo.values()):
+                suffix[size] = arr[size]
+            else:
+                break
+            size -= 1
+        #print(suffix)
+        temp = &#39;&#39;
+        for each in suffix:
+            if(each is not None):
+                temp += each
+        #print(temp)
+        #print(&quot;final size : &quot; + str(size))
+
+        if(size != len(arr) - 1):
+            for char in arr[2:size+1]:
+                #print(char)
+                if(char.isnumeric() or char in hex_vals.values()):
+                    #print(&#39;what&#39;)
+                    pass
+                else:
+                    print(&#39;ere&#39;)
+                    return False
+            return (True and checkEnd(arr, size+1, &#39;hex&#39;))
+        else:
+            return True
+
+    elif(arr[0] == &#39;0&#39; and arr[1] &lt; &#39;8&#39;):
+        if(letterFound != -1):
+            for char in arr[2:letterFound+2]:
+                #print(char)
+                if(char &lt; &#39;8&#39;):
+                    pass
+                else:
+                    #print(&#39;ere&#39;)
+                    return False
+            return (True and checkEnd(arr, letterFound+2, &#39;oct&#39;))
+        else:
+            return True
+    elif(arr[0] != 0):
+        if(letterFound != -1):
+            for char in arr[2:letterFound+2]:
+                #print(char)
+                if(char.isnumeric()):
+                    pass
+                else:
+                    #print(&#39;ere&#39;)
+                    return False
+            return (True and checkEnd(arr, letterFound+2, &#39;dec&#39;))
+        else:
+            return True
+    else:
+        return False
+
+def checkEnd(arr, startLetter, type):
+    endString = arr[startLetter:]
+    #print(endString, &quot;end string&quot;)
+    dec_endings = {
+        &#39;u&#39;:&#39;u&#39;,
+        &#39;l&#39;:&#39;l&#39;,
+        &#39;ul&#39;:&#39;ul&#39;,
+        &#39;LL&#39;:&#39;LL&#39;,
+        &#39;ull&#39;:&#39;ull&#39;,
+    }
+    hex_endings = {
+        &#39;u&#39;:&#39;u&#39;,
+        &#39;l&#39;:&#39;l&#39;,
+        &#39;uL&#39;:&#39;uL&#39;,
+        &#39;ll&#39;:&#39;ll&#39;,
+        &#39;uLL&#39;:&#39;uLL&#39;,
+    }
+    oct_endings = {
+        &#39;u&#39;:&#39;u&#39;,
+        &#39;l&#39;:&#39;l&#39;,
+        &#39;UL&#39;:&#39;UL&#39;,
+        &#39;ll&#39;:&#39;ll&#39;,
+        &#39;Ull&#39;:&#39;Ull&#39;,
+    }
+
+    whereToLook = str(type) + &quot;_endings&quot;
+    #print(whereToLook)
+    if(type == &#39;dec&#39;):
+        if(endString in dec_endings.values()):
+            #print(&#39;checkend returned true&#39;)
+            return True
+        else:
+            return False
+    elif(type == &#39;hex&#39;):
+        if(endString in hex_endings.values()):
+            #print(&#39;checkend returned true&#39;)
+            return True
+        else:
+            return False
+    elif(type == &#39;oct&#39;):
+        if(endString in oct_endings.values()):
+            #print(&#39;checkend returned true&#39;)
+            return True
+        else:
+            return False
+    else:
+        return False
+
+def main():
+
+    words = [&quot;28&quot;,&quot;4000000024u&quot;,&quot;2000000022l&quot;,&quot;4000000000ul&quot;,&quot;9000000000LL&quot;,&quot;900000000001ull&quot;,&quot;024&quot;,&quot;04000000024u&quot;,&quot;02000000022l&quot;,&quot;04000000000UL&quot;, &quot;044000000000000ll&quot;,&quot;044400000000000001Ull&quot;, &quot;0x2a&quot;, &#39;0XA0000024uu&#39;, &#39;0x20000022ll&#39;,&#39;0XA0000021uLLL&#39;,&#39;0x8a000000000000lll&#39;,&#39;0x8A40000000000010uLLL&#39;]
+
+    for word in words:
+        if(intChecker(word)):
+            print(word + &quot; is valid&quot;)
+        else:
+            print(word + &quot; is not valid&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-none"># tryChar.py
+symbols ={
+    &#39;~&#39; : &#39;~&#39; ,
+    &#39;`&#39; : &#39;`&#39; ,
+    &#39;!&#39; : &#39;!&#39; ,
+    &#39;@&#39; : &#39;@&#39; ,
+    &#39;#&#39; : &#39;#&#39; ,
+    &#39;$&#39; : &#39;$&#39; ,
+    &#39;%&#39; : &#39;%&#39; ,
+    &#39;^&#39; : &#39;^&#39; ,
+    &#39;&amp;&#39; : &#39;&amp;&#39; ,
+    &#39;*&#39; : &#39;*&#39; ,
+    &#39;(&#39; : &#39;(&#39; ,
+    &#39;)&#39; : &#39;)&#39; ,
+    &#39;-&#39; : &#39;-&#39; ,
+    &#39;_&#39; : &#39;_&#39; ,
+    &#39;+&#39; : &#39;+&#39; ,
+    &#39;=&#39; : &#39;=&#39; ,
+    &#39;{&#39; : &#39;{&#39; ,
+    &#39;[&#39; : &#39;[&#39; ,
+    &#39;}&#39; : &#39;}&#39; ,
+    &#39;]&#39; : &#39;]&#39; ,
+    &#39;|&#39; : &#39;|&#39; ,
+    &#39;:&#39; : &#39;:&#39; ,
+    &#39;;&#39; : &#39;;&#39; ,
+    &#39;&lt;&#39; : &#39;&lt;&#39;,
+    &#39;,&#39; : &#39;,&#39;,
+    &#39;&gt;&#39; : &#39;&gt;&#39;,
+    &#39;.&#39; : &#39;.&#39;,
+    &#39;?&#39; : &#39;?&#39;,
+}
+
+after_slash = {
+    &#39;b&#39;:&#39;b&#39;,
+    &#39;f&#39;:&#39;f&#39;,
+    &#39;n&#39;:&#39;n&#39;,
+    &#39;r&#39;:&#39;r&#39;,
+    &#39;&quot;&#39;:&#39;&quot;&#39;,
+    &#39;\\&#39;:&#39;\\&#39;,
+    &quot;&#39;&quot;:&quot;&#39;&quot;,
+    &#39;v&#39;:&#39;v&#39;,
+    &#39;a&#39;:&#39;a&#39;,
+    &#39;?&#39;:&#39;?&#39;,
+    &#39;N&#39;:&#39;N&#39;,
+    &#39;X&#39;:&#39;X&#39;,
+    &#39;t&#39;:&#39;t&#39;,
+}
+
+def charChecker(arr):
+    # this is very similar to the java string, so took the same algorithm from my java string and adapted it here
+    # i think we first need to handle the simplest case just making sure that we have the correct open and close
+    size = len(arr)
+    count = 0
+    # need this to handle the /XN
+    isX = False
+
+    # we cant have an empty string or &#39;a
+    # and we know we can&#39;t have anything more than 5
+    if(size &gt;= 5 or size &lt; 3):
+        return False
+    # print(arr[0], arr[-1])
+
+    if((arr[0] == &#39;&quot;&#39; and arr[-1] == &#39;&quot;&#39;) or (arr[0] == &quot;&#39;&quot; and arr[-1] == &quot;&#39;&quot;)):
+
+# don&#39;t need to check first letter since we know what it is
+# now we need to loop through the string and if we have a slash
+# we need to know that the next number, in this case arr[num] is a valid value
+# and we need to make sure that we only have an even number of slashes bc \\\
+# is not valid even though you can have a \ after a \
+        num = 1
+        for letter in arr[1:-1]:
+            #print(letter, &quot;printing letter hereeee&quot;)
+            num +=1
+            if(letter.isalnum() or letter in symbols.values()):
+                pass
+            elif(letter == &#39;\\&#39;):
+                count+=1
+                # print(count)
+                if(isX):
+                    if(arr[num] != &#39;N&#39;):
+                        return False
+                elif(arr[num] in after_slash.values()):
+                    #print(str(size) + &quot; size&quot;)
+                    if(arr[num] == &#39;X&#39;):
+                        isX = True
+                    if(num &lt; size-1):
+                        count+=-1
+                        #print(count)
+                elif(arr[num] not in after_slash.values()):
+                    return False
+            else:
+                pass
+    else:
+        return False
+    if(count == 0):
+        return True
+
+    return True
+
+def main():
+
+    words = [&quot;\&#39;1\&#39;&quot;, &quot;\&#39;!\&#39;&quot;, &quot;\&quot;$\&quot;&quot;, &quot;\&#39;\t\&#39;&quot;, &quot;\&#39;\?\&#39;&quot;, &quot;\&#39;\\\&#39;&quot;, &quot;\&#39;\f\&#39;&quot;, &quot;\&#39;\XN\&#39;&quot;, &quot;\&#39;]\&#39;&quot;, &quot;\&#39;n\&#39;&quot;, &#39;\&#39;e\&quot;&#39; , &quot;v\&#39;v\&#39;&quot;,  &#39;&quot;024&quot;&#39;]
+
+    for word in words:
+        if(charChecker(word)):
+            print(word + &quot; is valid&quot;)
+        else:
+            print(word + &quot; is not valid&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python"># tryJava.py
+after_slash = {
+    &#39;t&#39;:&#39;t&#39;,
+    &#39;r&#39;:&#39;r&#39;,
+    &#39;n&#39;:&#39;n&#39;,
+    &#39;f&#39;:&#39;f&#39;,
+    &#39;&quot;&#39;:&#39;&quot;&#39;,
+    &#39;\\&#39;:&#39;\\&#39;,
+
+}
+
+def javaChecker(arr):
+    # i think we first need to handle the simplest case just making sure that we have &quot; &quot;
+    size = len(arr)
+    count = 0
+    preCount = 0
+    if(size &lt; 3):
+        return False
+    for letter in arr:
+        if(letter == &#39;\\&#39;):
+            preCount+=1
+
+    if(arr[0] == &quot;&#39;&quot; and arr[1] != &quot;\\&quot; and arr[2] == &quot;&#39;&quot; and len(arr) == 3 ):
+        return True
+# this is so that we know that the string starts and ends with quotation mark
+    if(arr[0] == &#39;&quot;&#39; and arr[-1] == &#39;&quot;&#39;):
+# don&#39;t need to check first letter since we know what it is
+# now we need to loop through the string and if we have a slash
+# we need to know that the next number, in this case arr[num] is a valid value
+# and we need to make sure that we only have an even number of slashes bc \\\
+# is not valid even though you can have a \ after a \
+        num = 1
+        for letter in arr[1:-1]:
+            num +=1
+            if(letter == &#39;\\&#39;):
+                count+=1
+                # print(count)
+                if(arr[num] in after_slash.values()):
+                    if(num &lt; size-1):
+                        count+=-1
+                        # print(count)
+                if(arr[num] not in after_slash.values()):
+                    return False
+    if(count != 0):
+        return False
+
+    return True
+
+def main():
+    # the way this works is if you copy and paste my output into a java compiler, these strings will be valid
+    # this is due to how the strings go into the function but it is what it is
+    words = [&quot;&#39;a&#39;&quot;, &#39;&quot;string?&quot;&#39;, &#39;&quot;string\t&quot;&#39;, &#39;&quot;str\\&quot;&#39;, &#39;&quot;stri\\&quot;s&quot;&#39;, &#39;&quot;st\\&quot;ri\\&quot;s&quot;&#39;, &quot;valid??@123&quot;, &#39;&quot;val33\\{1!@#$%&quot;&#39;]
+
+    for word in words:
+        if(javaChecker(word)):
+            print(word + &quot; is valid&quot;)
+        else:
+            print(word + &quot; is not valid&quot;)
+
+if __name__ == &#39;__main__&#39;:
+    main()
+</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python"># tryOperator.py
+def operatorChecker(op):
+    # we need to make sure that we get an operator and not empty string
+    # and that the length of the operator is never more than 4
+    if(len(op) &gt; 4):
+        return False
+
+    # now we just see what it is
+
+    if (op == &#39;+&#39; ):
+        return True
+    elif (op == &#39;-&#39; ):
+        return True
+    elif (op == &#39;=&#39;):
+        return True
+    elif (op == &#39;-&#39;):
+        return True
+    elif (op == &#39;/&#39;):
+        return True
+    elif (op == &#39;*&#39;):
+        return True
+    elif (op == &#39;%&#39;):
+        return True
+    elif (op == &#39;{&#39;):
+        return True
+    elif (op == &#39;}&#39;):
+        return True
+    elif (op == &#39;(&#39;):
+        return True
+    elif (op == &#39;)&#39;):
+        return True
+    elif (op == &#39;++&#39;):
+        return True
+    elif (op == &#39;--&#39;):
+        return True
+    elif (op == &#39;&amp;&amp;&#39;):
+        return True
+    elif (op == &#39;||&#39;):
+        return True
+    elif (op == &#39;!&#39;):
+        return True
+    else:
+        return False
+
+def main():
+    words = [&#39;+&#39;, &#39;-&#39;, &#39;/&#39;, &#39;%&#39;, &#39;+-&#39;, &#39;&#39;, &#39;faill&#39;, &#39;$$&#39;, &#39;1&#39;]
+
+    for word in words:
+        if(operatorChecker(word)):
+            print(word + &quot; is valid&quot;)
+        else:
+            print(word + &quot; is not valid&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python"># tryPerl.py
+def perlChecker(word):
+    if(len(word) &lt; 2):
+        return False
+    foundStart = None
+    for letter in word:
+        if(letter.isalnum() or letter == &#39;$&#39; or letter == &#39;@&#39; or letter == &#39;%&#39; or letter == &#39;_&#39;):
+            if (foundStart == None):
+                if( (letter == &quot;$&quot; or letter == &quot;%&quot; or letter == &quot;@&quot;)):
+                    foundStart = letter
+                else:
+                    return False
+            else:
+                # now we just need numbers or underscore
+                if( letter.isalnum() or letter == &quot;_&quot;):
+                    pass
+                else:
+                    return False
+        else:
+            return False
+    return True
+
+def main():
+
+    words = [&#39;$var_sas&#39;, &#39;@another2&#39;, &#39;@test&#39;, &#39;%another\s&#39;, &#39;$test_$&#39;, &#39;#testt&#39;, &#39;@test#w&#39;]
+    for word in words:
+        if(perlChecker(word)):
+            print(word + &quot; is valid&quot;)
+        else:
+            print(word + &quot; is not valid&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python"># getWords.py
+# gets all of the words from a file
+def fromFile(fileName):
+    f = open(fileName, &#39;r&#39;)
+    finalList = f.read().split(&#39;\n&#39;)
+    return finalList
+
+def main():
+    print(fromFile(&#39;testInputs.txt&#39;))
+
+if __name__ == &#39;__main__&#39;:
+    main()
+</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-none"># finalOut.txt
+# output of above program
+
+&#39;1&#39;
+&#39;1&#39; C Char:              VALID
+&#39;1&#39; C Float: not VALID
+&#39;1&#39; C Int:           VALID
+&#39;1&#39; Java String:             VALID
+&#39;1&#39; Operator: not VALID
+&#39;1&#39; Perl Identifier: not VALID
+
+&#39;!&#39;
+&#39;!&#39; C Char:              VALID
+&#39;!&#39; C Float: not VALID
+&#39;!&#39; C Int:           VALID
+&#39;!&#39; Java String:             VALID
+&#39;!&#39; Operator: not VALID
+&#39;!&#39; Perl Identifier: not VALID
+
+&quot;$&quot;
+&quot;$&quot; C Char:              VALID
+&quot;$&quot; C Float: not VALID
+&quot;$&quot; C Int:           VALID
+&quot;$&quot; Java String:             VALID
+&quot;$&quot; Operator: not VALID
+&quot;$&quot; Perl Identifier: not VALID
+
+&#39;\t&#39;
+&#39;\t&#39; C Char:             VALID
+&#39;\t&#39; C Float: not VALID
+&#39;\t&#39; C Int: not VALID
+&#39;\t&#39; Java String:            VALID
+&#39;\t&#39; Operator: not VALID
+&#39;\t&#39; Perl Identifier: not VALID
+
+&#39;\?&#39;
+&#39;\?&#39; C Char:             VALID
+&#39;\?&#39; C Float: not VALID
+&#39;\?&#39; C Int:              VALID
+&#39;\?&#39; Java String:            VALID
+&#39;\?&#39; Operator: not VALID
+&#39;\?&#39; Perl Identifier: not VALID
+
+&#39;\\&#39;
+&#39;\\&#39; C Char:             VALID
+&#39;\\&#39; C Float: not VALID
+&#39;\\&#39; C Int:              VALID
+&#39;\\&#39; Java String:            VALID
+&#39;\\&#39; Operator: not VALID
+&#39;\\&#39; Perl Identifier: not VALID
+
+&#39;\f&#39;
+&#39;\f&#39; C Char:             VALID
+&#39;\f&#39; C Float: not VALID
+&#39;\f&#39; C Int: not VALID
+&#39;\f&#39; Java String:            VALID
+&#39;\f&#39; Operator: not VALID
+&#39;\f&#39; Perl Identifier: not VALID
+
+&#39;\XN&#39;
+&#39;\XN&#39; C Char: not VALID
+&#39;\XN&#39; C Float: not VALID
+&#39;\XN&#39; C Int: not VALID
+&#39;\XN&#39; Java String:           VALID
+&#39;\XN&#39; Operator: not VALID
+&#39;\XN&#39; Perl Identifier: not VALID
+
+&#39;]&#39;
+&#39;]&#39; C Char:              VALID
+&#39;]&#39; C Float: not VALID
+&#39;]&#39; C Int:           VALID
+&#39;]&#39; Java String:             VALID
+&#39;]&#39; Operator: not VALID
+&#39;]&#39; Perl Identifier: not VALID
+
+&#39;n&#39;
+&#39;n&#39; C Char:              VALID
+&#39;n&#39; C Float: not VALID
+&#39;n&#39; C Int:           VALID
+&#39;n&#39; Java String:             VALID
+&#39;n&#39; Operator: not VALID
+&#39;n&#39; Perl Identifier: not VALID
+
+&#39;e&quot;
+&#39;e&quot; C Char: not VALID
+&#39;e&quot; C Float: not VALID
+&#39;e&quot; C Int:           VALID
+&#39;e&quot; Java String:             VALID
+&#39;e&quot; Operator: not VALID
+&#39;e&quot; Perl Identifier: not VALID
+
+v\&#39;v\&#39;
+v\&#39;v\&#39; C Char: not VALID
+v\&#39;v\&#39; C Float: not VALID
+v\&#39;v\&#39; C Int: not VALID
+v\&#39;v\&#39; Java String:              VALID
+v\&#39;v\&#39; Operator: not VALID
+v\&#39;v\&#39; Perl Identifier: not VALID
+
+23.75
+23.75 C Char: not VALID
+23.75 C Float:           VALID
+23.75 C Int:             VALID
+23.75 Java String:           VALID
+23.75 Operator: not VALID
+23.75 Perl Identifier: not VALID
+
+0.59201E1
+0.59201E1 C Char: not VALID
+0.59201E1 C Float:           VALID
+0.59201E1 C Int: not VALID
+0.59201E1 Java String:           VALID
+0.59201E1 Operator: not VALID
+0.59201E1 Perl Identifier: not VALID
+
+1312221215e-2
+1312221215e-2 C Char: not VALID
+1312221215e-2 C Float:           VALID
+1312221215e-2 C Int: not VALID
+1312221215e-2 Java String:           VALID
+1312221215e-2 Operator: not VALID
+1312221215e-2 Perl Identifier: not VALID
+
+-2.5e-3
+-2.5e-3 C Char: not VALID
+-2.5e-3 C Float:             VALID
+-2.5e-3 C Int: not VALID
+-2.5e-3 Java String:             VALID
+-2.5e-3 Operator: not VALID
+-2.5e-3 Perl Identifier: not VALID
+
+15E-4
+15E-4 C Char: not VALID
+15E-4 C Float:           VALID
+15E-4 C Int: not VALID
+15E-4 Java String:           VALID
+15E-4 Operator: not VALID
+15E-4 Perl Identifier: not VALID
+
+121.0L
+121.0L C Char: not VALID
+121.0L C Float: not VALID
+121.0L C Int: not VALID
+121.0L Java String:              VALID
+121.0L Operator: not VALID
+121.0L Perl Identifier: not VALID
+
+122.0F
+122.0F C Char: not VALID
+122.0F C Float: not VALID
+122.0F C Int: not VALID
+122.0F Java String:              VALID
+122.0F Operator: not VALID
+122.0F Perl Identifier: not VALID
+
+1x0.0F
+1x0.0F C Char: not VALID
+1x0.0F C Float: not VALID
+1x0.0F C Int: not VALID
+1x0.0F Java String:              VALID
+1x0.0F Operator: not VALID
+1x0.0F Perl Identifier: not VALID
+
+.02ef3
+.02ef3 C Char: not VALID
+.02ef3 C Float: not VALID
+.02ef3 C Int: not VALID
+.02ef3 Java String:              VALID
+.02ef3 Operator: not VALID
+.02ef3 Perl Identifier: not VALID
+
+0.01ee1
+0.01ee1 C Char: not VALID
+0.01ee1 C Float: not VALID
+0.01ee1 C Int: not VALID
+0.01ee1 Java String:             VALID
+0.01ee1 Operator: not VALID
+0.01ee1 Perl Identifier: not VALID
+
+0.5e1lf
+0.5e1lf C Char: not VALID
+0.5e1lf C Float: not VALID
+0.5e1lf C Int: not VALID
+0.5e1lf Java String:             VALID
+0.5e1lf Operator: not VALID
+0.5e1lf Perl Identifier: not VALID
+
+69e--2
+69e--2 C Char: not VALID
+69e--2 C Float: not VALID
+69e--2 C Int: not VALID
+69e--2 Java String:              VALID
+69e--2 Operator: not VALID
+69e--2 Perl Identifier: not VALID
+
+28
+28 C Char: not VALID
+28 C Float:              VALID
+28 C Int:            VALID
+28 Java String: not VALID
+28 Operator: not VALID
+28 Perl Identifier: not VALID
+
+4000000024u
+4000000024u C Char: not VALID
+4000000024u C Float: not VALID
+4000000024u C Int:           VALID
+4000000024u Java String:             VALID
+4000000024u Operator: not VALID
+4000000024u Perl Identifier: not VALID
+
+2000000022l
+2000000022l C Char: not VALID
+2000000022l C Float:             VALID
+2000000022l C Int:           VALID
+2000000022l Java String:             VALID
+2000000022l Operator: not VALID
+2000000022l Perl Identifier: not VALID
+
+4000000000ul
+4000000000ul C Char: not VALID
+4000000000ul C Float: not VALID
+4000000000ul C Int:              VALID
+4000000000ul Java String:            VALID
+4000000000ul Operator: not VALID
+4000000000ul Perl Identifier: not VALID
+
+9000000000LL
+9000000000LL C Char: not VALID
+9000000000LL C Float: not VALID
+9000000000LL C Int:              VALID
+9000000000LL Java String:            VALID
+9000000000LL Operator: not VALID
+9000000000LL Perl Identifier: not VALID
+
+900000000001ull
+900000000001ull C Char: not VALID
+900000000001ull C Float: not VALID
+900000000001ull C Int:           VALID
+900000000001ull Java String:             VALID
+900000000001ull Operator: not VALID
+900000000001ull Perl Identifier: not VALID
+
+024
+024 C Char: not VALID
+024 C Float:             VALID
+024 C Int:           VALID
+024 Java String:             VALID
+024 Operator: not VALID
+024 Perl Identifier: not VALID
+
+04000000024u
+04000000024u C Char: not VALID
+04000000024u C Float: not VALID
+04000000024u C Int:              VALID
+04000000024u Java String:            VALID
+04000000024u Operator: not VALID
+04000000024u Perl Identifier: not VALID
+
+02000000022l
+02000000022l C Char: not VALID
+02000000022l C Float:            VALID
+02000000022l C Int:              VALID
+02000000022l Java String:            VALID
+02000000022l Operator: not VALID
+02000000022l Perl Identifier: not VALID
+
+04000000000UL
+04000000000UL C Char: not VALID
+04000000000UL C Float: not VALID
+04000000000UL C Int:             VALID
+04000000000UL Java String:           VALID
+04000000000UL Operator: not VALID
+04000000000UL Perl Identifier: not VALID
+
+044000000000000ll
+044000000000000ll C Char: not VALID
+044000000000000ll C Float: not VALID
+044000000000000ll C Int:             VALID
+044000000000000ll Java String:           VALID
+044000000000000ll Operator: not VALID
+044000000000000ll Perl Identifier: not VALID
+
+044400000000000001Ull
+044400000000000001Ull C Char: not VALID
+044400000000000001Ull C Float: not VALID
+044400000000000001Ull C Int:             VALID
+044400000000000001Ull Java String:           VALID
+044400000000000001Ull Operator: not VALID
+044400000000000001Ull Perl Identifier: not VALID
+
+0x2a
+0x2a C Char: not VALID
+0x2a C Float: not VALID
+0x2a C Int:              VALID
+0x2a Java String:            VALID
+0x2a Operator: not VALID
+0x2a Perl Identifier: not VALID
+
+0XA0000024uu
+0XA0000024uu C Char: not VALID
+0XA0000024uu C Float: not VALID
+0XA0000024uu C Int: not VALID
+0XA0000024uu Java String:            VALID
+0XA0000024uu Operator: not VALID
+0XA0000024uu Perl Identifier: not VALID
+
+0x20000022ll
+0x20000022ll C Char: not VALID
+0x20000022ll C Float: not VALID
+0x20000022ll C Int:              VALID
+0x20000022ll Java String:            VALID
+0x20000022ll Operator: not VALID
+0x20000022ll Perl Identifier: not VALID
+
+0XA0000021uLLL
+0XA0000021uLLL C Char: not VALID
+0XA0000021uLLL C Float: not VALID
+0XA0000021uLLL C Int: not VALID
+0XA0000021uLLL Java String:              VALID
+0XA0000021uLLL Operator: not VALID
+0XA0000021uLLL Perl Identifier: not VALID
+
+0x8a000000000000lll
+0x8a000000000000lll C Char: not VALID
+0x8a000000000000lll C Float: not VALID
+0x8a000000000000lll C Int: not VALID
+0x8a000000000000lll Java String:             VALID
+0x8a000000000000lll Operator: not VALID
+0x8a000000000000lll Perl Identifier: not VALID
+
+0x8A40000000000010uLLL
+0x8A40000000000010uLLL C Char: not VALID
+0x8A40000000000010uLLL C Float: not VALID
+0x8A40000000000010uLLL C Int: not VALID
+0x8A40000000000010uLLL Java String:              VALID
+0x8A40000000000010uLLL Operator: not VALID
+0x8A40000000000010uLLL Perl Identifier: not VALID
+
+&quot;a&quot;
+&quot;a&quot; C Char:              VALID
+&quot;a&quot; C Float: not VALID
+&quot;a&quot; C Int:           VALID
+&quot;a&quot; Java String:             VALID
+&quot;a&quot; Operator: not VALID
+&quot;a&quot; Perl Identifier: not VALID
+
+&quot;string?&quot;
+&quot;string?&quot; C Char: not VALID
+&quot;string?&quot; C Float: not VALID
+&quot;string?&quot; C Int: not VALID
+&quot;string?&quot; Java String:           VALID
+&quot;string?&quot; Operator: not VALID
+&quot;string?&quot; Perl Identifier: not VALID
+
+&quot;string\t&quot;
+&quot;string\t&quot; C Char: not VALID
+&quot;string\t&quot; C Float: not VALID
+&quot;string\t&quot; C Int: not VALID
+&quot;string\t&quot; Java String:              VALID
+&quot;string\t&quot; Operator: not VALID
+&quot;string\t&quot; Perl Identifier: not VALID
+
+&quot;str\\&quot;
+&quot;str\\&quot; C Char: not VALID
+&quot;str\\&quot; C Float: not VALID
+&quot;str\\&quot; C Int: not VALID
+&quot;str\\&quot; Java String: not VALID
+&quot;str\\&quot; Operator: not VALID
+&quot;str\\&quot; Perl Identifier: not VALID
+
+&quot;stri\\&quot;s&quot;
+&quot;stri\\&quot;s&quot; C Char: not VALID
+&quot;stri\\&quot;s&quot; C Float: not VALID
+&quot;stri\\&quot;s&quot; C Int: not VALID
+&quot;stri\\&quot;s&quot; Java String:              VALID
+&quot;stri\\&quot;s&quot; Operator: not VALID
+&quot;stri\\&quot;s&quot; Perl Identifier: not VALID
+
+&quot;st\\&quot;ri\\&quot;s&quot;
+&quot;st\\&quot;ri\\&quot;s&quot; C Char: not VALID
+&quot;st\\&quot;ri\\&quot;s&quot; C Float: not VALID
+&quot;st\\&quot;ri\\&quot;s&quot; C Int: not VALID
+&quot;st\\&quot;ri\\&quot;s&quot; Java String:           VALID
+&quot;st\\&quot;ri\\&quot;s&quot; Operator: not VALID
+&quot;st\\&quot;ri\\&quot;s&quot; Perl Identifier: not VALID
+
+&quot;valid??@123&quot;
+&quot;valid??@123&quot; C Char: not VALID
+&quot;valid??@123&quot; C Float: not VALID
+&quot;valid??@123&quot; C Int: not VALID
+&quot;valid??@123&quot; Java String:           VALID
+&quot;valid??@123&quot; Operator: not VALID
+&quot;valid??@123&quot; Perl Identifier: not VALID
+
+&quot;val33\\{1!@#$%&quot;
+&quot;val33\\{1!@#$%&quot; C Char: not VALID
+&quot;val33\\{1!@#$%&quot; C Float: not VALID
+&quot;val33\\{1!@#$%&quot; C Int: not VALID
+&quot;val33\\{1!@#$%&quot; Java String: not VALID
+&quot;val33\\{1!@#$%&quot; Operator: not VALID
+&quot;val33\\{1!@#$%&quot; Perl Identifier: not VALID
+
++
++ C Char: not VALID
++ C Float: not VALID
++ C Int: not VALID
++ Java String: not VALID
++ Operator:              VALID
++ Perl Identifier: not VALID
+
+-
+- C Char: not VALID
+- C Float: not VALID
+- C Int: not VALID
+- Java String: not VALID
+- Operator:              VALID
+- Perl Identifier: not VALID
+
+/
+/ C Char: not VALID
+/ C Float: not VALID
+/ C Int: not VALID
+/ Java String: not VALID
+/ Operator:              VALID
+/ Perl Identifier: not VALID
+
+%
+% C Char: not VALID
+% C Float: not VALID
+% C Int: not VALID
+% Java String: not VALID
+% Operator:              VALID
+% Perl Identifier: not VALID
+
++-
++- C Char: not VALID
++- C Float: not VALID
++- C Int:            VALID
++- Java String: not VALID
++- Operator: not VALID
++- Perl Identifier: not VALID
+
+faill
+faill C Char: not VALID
+faill C Float: not VALID
+faill C Int: not VALID
+faill Java String:           VALID
+faill Operator: not VALID
+faill Perl Identifier: not VALID
+
+$$
+$$ C Char: not VALID
+$$ C Float: not VALID
+$$ C Int:            VALID
+$$ Java String: not VALID
+$$ Operator: not VALID
+$$ Perl Identifier: not VALID
+
+1
+1 C Char: not VALID
+1 C Float: not VALID
+1 C Int: not VALID
+1 Java String: not VALID
+1 Operator: not VALID
+1 Perl Identifier: not VALID
+
+$var_sas
+$var_sas C Char: not VALID
+$var_sas C Float: not VALID
+$var_sas C Int: not VALID
+$var_sas Java String:            VALID
+$var_sas Operator: not VALID
+$var_sas Perl Identifier:            VALID
+
+@another2
+@another2 C Char: not VALID
+@another2 C Float: not VALID
+@another2 C Int: not VALID
+@another2 Java String:           VALID
+@another2 Operator: not VALID
+@another2 Perl Identifier:           VALID
+
+@test
+@test C Char: not VALID
+@test C Float: not VALID
+@test C Int: not VALID
+@test Java String:           VALID
+@test Operator: not VALID
+@test Perl Identifier:           VALID
+
+%another\s
+%another\s C Char: not VALID
+%another\s C Float: not VALID
+%another\s C Int: not VALID
+%another\s Java String:              VALID
+%another\s Operator: not VALID
+%another\s Perl Identifier: not VALID
+
+$test_$
+$test_$ C Char: not VALID
+$test_$ C Float: not VALID
+$test_$ C Int: not VALID
+$test_$ Java String:             VALID
+$test_$ Operator: not VALID
+$test_$ Perl Identifier: not VALID
+
+#testt
+#testt C Char: not VALID
+#testt C Float: not VALID
+#testt C Int: not VALID
+#testt Java String:              VALID
+#testt Operator: not VALID
+#testt Perl Identifier: not VALID
+
+@test#w
+@test#w C Char: not VALID
+@test#w C Float: not VALID
+@test#w C Int: not VALID
+@test#w Java String:             VALID
+@test#w Operator: not VALID
+@test#w Perl Identifier: not VALID
+
+ C Char: not VALID
+ C Float: not VALID
+ C Int: not VALID
+ Java String: not VALID
+ Operator: not VALID
+ Perl Identifier: not VALID
+</code></pre></div></li>
+<li><p>(9 points) Write three functions in C or C++: one that declares a large array statically, one that declares the same large array on the stack, and one that creates the same large array from the heap. Call each of the subprograms a large number of times (at least 100,000) and output the time  required by each. Explain the results.</p>
+
+<ul>
+<li>For this program I wrote mine in C. This question was actually not too hard and I enjoyed it because it had been a while since I programmed in C. </li>
+<li>Anyways, for my program I created arrays that were of length/size 10000 and then I ran each function for 10,000,000. AKA 10 million times</li>
+<li>After waiting for the execution the reults were the following:</li>
+<li>the stack function was the quickest taking only .020545 seconds</li>
+<li>Second quickest was the static function which took .021356 seconds</li>
+<li>And finally the slowest by far was the heap function which took 15.688600 seconds</li>
+<li>I belive that the reason the stack is the fastest is because pushing on to the stack is incredibly easy. It probably happens instantly. While when we are doing the heap we have to allocate space in memory and then deal with pointers and anytime we have to go to memory we are slowed down significantly.</li>
+<li>The stack is better for anything short term that only needs to be there when the function is alive then we can use the stack.</li>
+<li>But if we are dealing with big arrays or structs that can change in size then we should use the heap.</li>
+<li>I have included the output in a txt file as well</li>
+<li>And here is the source code</li>
+<li>jose_question2.c</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-none">// question2_jose.c
+
+    #include &lt;stdio.h&gt;
+    #include &lt;stdlib.h&gt;
+    #include &lt;time.h&gt;
+
+    int staticArr();
+    int stackArr();
+    int heapArr();
+
+    int main() {
+
+      // Now here I will try to get the amount of time that each function takes.
+      // I will run it 10000000 times bc i don&#39;t want to blow up my computer lol
+
+      // the code for finding out how long it takes to run is from
+      // geeks for geeks
+      // https://www.geeksforgeeks.org/how-to-measure-time-taken-by-a-program-in-c/
+
+       printf(&quot;Hello, World! \n&quot;);
+
+       clock_t first;
+       first = clock();
+
+       for(int i = 0; i &lt; 10000000; i++){
+         staticArr();
+       }
+
+       first = clock() - first;
+       double firstTime = ((double)first) / CLOCKS_PER_SEC;
+       printf(&quot;staticArr() took %f seconds to execute \n&quot;, firstTime);
+
+       clock_t second;
+       second = clock();
+
+       for(int i = 0; i &lt; 10000000; i++){
+         stackArr();
+       }
+
+       second = clock() - second;
+       double secondTime = ((double)second) / CLOCKS_PER_SEC;
+       printf(&quot;stackArr() took %f seconds to execute \n&quot;, secondTime);
+
+       clock_t third;
+       third = clock();
+
+       for(int i = 0; i &lt; 10000000; i++){
+         heapArr();
+       }
+
+       third = clock() - third;
+       double thirdTime = ((double)third) / CLOCKS_PER_SEC;
+       printf(&quot;heapArr() took %f seconds to execute \n&quot;, thirdTime);
+
+       printf(&quot;---- Jose Diaz ----\n&quot;);
+       return 0;
+    }
+
+    int staticArr() {
+
+      // not sure if this is correct. have to declare &#39;statically&#39; and this is the static
+      // keyword sooo. But I read that static means that the variable can only be accessed
+      // from the file that created it but still shaky on this
+      // i read the info from here: http://www.mathcs.emory.edu/~cheung/Courses/255/Syllabus/1-C-intro/scope-global.html
+
+       static int balance[10000];
+
+       // for(int i = 0; i &lt; 1000; i++){
+       //   balance[i] = i;
+       //   //printf(&quot;%d&quot;, balance[i]);
+       // }
+
+       return 0;
+    }
+
+    int stackArr() {
+
+      // this one is also weird bc whenever you make a variable in a function it goes on the stack
+      // sooooo
+      // this is it???
+
+      int stacked[10000];
+
+      return 0;
+    }
+
+    int heapArr(){
+
+      // Inspiration for this part came from:
+      // https://gribblelab.org/CBootCamp/7_Memory_Stack_vs_Heap.html
+      // this part showed that to do it in a heap you had to use
+      // the malloc function
+
+      int *heaped = malloc(10000 * sizeof(int));
+
+  return 0;
+}
+</code></pre></div>
+
+<ul>
+<li>output is also here:</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-none">Hello, World! 
+staticArr() took 0.021356 seconds to execute 
+stackArr() took 0.020545 seconds to execute 
+heapArr() took 15.688600 seconds to execute 
+---- Jose Diaz ----
+</code></pre></div></li>
+<li><p>(11 points) Write an EBNF or CFG that while handle prefix/preorder Arithmetic Operations (addition, subtraction, multiplication, division, modulo) with the proper order of operations? What all types of parsers can be used to show the syntax for this? Justify your answer.</p>
+
+<ul>
+<li>&lt;statement&gt; := &lt;statment&gt;\ &#39;*&#39; &lt;term&gt; | &lt;statment&gt;\ &#39;/&#39; &lt;term&gt; | &lt;statment&gt;\ &#39;%&#39; &lt;term&gt; | <term></li>
+<li>&lt;term&gt; := &lt;term&gt; &#39;+&#39; &lt;var&gt; | &lt;term&gt; &#39;-&#39; &lt;var&gt; | &lt;var&gt;</li>
+<li>&lt;var&gt; := [&lt;letter&gt; | &lt;number&gt;]</li>
+<li>&lt;letter&gt; := [A-Z | a-z]</li>
+<li>&lt;num&gt; := [0-9]</li>
+<li>All top down parsers can work with this CFG because they all build the parse tree from the top down and then you read left to right</li>
+<li>This CFG I based off of the one from the PLC textbook. I believe this will work because in the textbook they build the derivation from the top down and it works and precedence is maintained I beleive</li>
+</ul></li>
+<li><p>(10 points) What features of the compilation process allow us to determine the reference environment for any at any given line of code in the program. Answer this question for both dynamic and static scoping? Does the type of scoping change this answer? Explain why?</p>
+
+<ul>
+<li>The symbol table is the part of the compilation process that will help us determine the scope of a variable. This is because &quot;it stores information about the occurence of various entities such as variable names, function names, objects, classes, interfaces, etc&quot; from Tutorials Point. Found here: <a href="https://www.tutorialspoint.com/compiler_design/compiler_design_symbol_table.htm">https://www.tutorialspoint.com/compiler_design/compiler_design_symbol_table.htm</a></li>
+<li>And this makes perfect sense because if you look at the graphic found on the same page, the symbol table also holds information on the scope of the variables. So no matter what scope we have, the symbol table will know exactly where the scope is and what the reference environment is. This would not change given the type of scope. The symbol table knows everything about a variable
+<img src="symbol_table.jpg" alt="symbol table"></li>
+</ul></li>
+<li><p>(10 points) Detail how you would go about adding reserved words into the problem where you are designing your own lexical analyzer? How would you have to change your code? What would you have to add to let users choose a reserve word word as an identifier?</p>
+
+<ul>
+<li>If I wanted to add reserved words to my lexical analyzer from problem 1 the way I would go about is that before passing in my word into all of the functions, I would first check to see if the word is in a dictionary or hash-map of reserved words. If it is then we do not pass that word into all of the functions.</li>
+<li>This way we very quickly and easily find if a word is a reserved word and that way it is also not mistaken as some other type of word</li>
+<li>This also means that we can very easily just add words to our reserved words dictionary if we ever need to </li>
+<li>And if we wanted to let users use a reserved word as an identifier than I would put an if statement in my code from question 1 to be able to identify that this reservedWord with a &#39;*&#39; attached to the end will not be used as a reserved word and instead will be used as an identifier.</li>
+<li>Something like this, this is far from done but you get the gist of it:</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-none">incomingWord = &#39;string*&#39;
+reserved_words = {
+    &#39;string&#39;:&#39;string&#39;,
+}
+if(incomingWord[-1] == &#39;*&#39;):
+    lexicalAnalizer(incomingWord[:-1]
+else:
+    # check if word is in reserved_words
+    # if so then it doesn&#39;t go to lexical analizer</code></pre></div></li>
+<li><p>(20 points) Write a recursive decent algorithm for a java while statement, a Javas if statement , an logical/mathematical expression based on the rules you created in your lexical analyzer, and an mathe- matical assignment statement , where statement may be an empty function. Supply the EBNF rule for each.</p>
+
+<ul>
+<li>I looked at the <a href="https://docs.oracle.com/javase/specs/jls/se15/html/jls-14.html#jls-WhileStatement">java docs</a> to base my answer off of. It kind of was helpful but its kind of weird because its very &#39;generic&#39;. Like when it calls for a statement it just calls for &lt;statement&gt; but in the bottom it says that the statement must be type boolean. So like why not have &lt;booleanStatement&gt;. You are writing and maintaining one of the most used languages why not make it easier on everyone who is looking at your EBNF/CFG</li>
+<li>The EBNF for a while statement is something like this:
+
+<ul>
+<li>&lt;whileStatement&gt; := &quot;while&quot; + &quot;(&quot; + &lt;booleanTypeExpression&gt; + &quot;)&quot; [&lt;statement&gt;]</li>
+<li>You would have the statement in [] because the statement following the while is optional because if you look at the java docs you can see that that statement can ba a &quot;StatementWithoutTrailingSubstatement&quot; which can then be an &quot;EmptyStatement&quot;</li>
+<li>What this means is that the statement can be nothing so for us it means it can be optional</li>
+<li><img src="while.png" alt="while screenshot"></li>
+</ul></li>
+<li>The EBNF for an if statement is something like this:
+
+<ul>
+<li>&lt;ifStatement&gt; := &quot;if&quot; + &quot;(&quot; + &lt;booleanTypeExpression&gt; + &quot;)&quot; [&lt;statement&gt;]</li>
+<li>The same reasoning as with the while, the docs say that the &lt;statement&gt; can be an empty statement meaning that for us the statement can be optional</li>
+</ul></li>
+<li>The EBNF for a logical/mathematical expression and assignment looks something like this:</li>
+<li>I put them both together because they are both statements, just slightly different</li>
+<li>if we base it off of how I did number one then we can only do the basic operators and assigning one variable to another
+
+<ul>
+<li>&lt;Statement&gt; := &lt;var&gt; &lt;op&gt; [&lt;var&gt;]</li>
+<li>&lt;op&gt; := [&#39;/&#39;|&#39;*&#39;|&#39;%&#39;|&#39;+&#39;|&#39;-&#39;|&#39;=&#39;]</li>
+<li>&lt;var&gt; := &lt;id&gt;</li>
+<li>&lt;id&gt; := &lt;letter&gt;{0-9}</li>
+<li>&lt;letter&gt; := [A-Z | a-z]{&lt;\letter&gt;}</li>
+</ul></li>
+<li>Obviously if the operator is an equal sign then we will be doing an assignment statement but just to clarify.</li>
+<li>For this problem I did it very similarly to how I did question 1</li>
+<li>Here is a screenshot of the output that this program gives</li>
+<li><img src="q6_screen.png" alt="question 6 screenshot"></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-p">
+types = {
+    &#39;byte&#39;:&#39;byte&#39;,
+    &#39;short&#39;:&#39;short&#39;,
+    &#39;int&#39;:&#39;int&#39;,
+    &#39;long&#39;:&#39;long&#39;,
+    &#39;float&#39;:&#39;float&#39;,
+    &#39;double&#39;:&#39;double&#39;,
+    &#39;boolean&#39;:&#39;boolean&#39;,
+    &#39;char&#39;:&#39;char&#39;,
+}
+
+def startChecker(arr):
+    haveWhile = False
+    haveIf = False
+    # print(arr[:2])
+    # print(arr[:5])
+    if(arr[:5] == &#39;while&#39;):
+        # print(&#39;we have while at the start&#39;)
+        haveWhile = True
+        return True and checkBool(arr[5:])
+    elif(arr[:2] == &#39;if&#39;):
+        # print(&#39;we have an if&#39;)
+        haveIf = True
+        return True and checkBool(arr[2:])
+    else:
+        # lets find if we have an =
+        equalSign = arr.find(&#39;=&#39;)
+        if(equalSign != -1):
+            # need to see if we have variable type and a value and a ;
+            return True and checkVar(arr, equalSign)
+        else:
+            return False
+    return False
+
+def checkBool(end):
+    parenCount = 0
+    curlyCount = 0
+    startBool = False
+    totalBool = False
+    for char in end:
+        if(char == &#39;(&#39;):
+            parenCount += 1
+        elif(char == &#39;)&#39;):
+            parenCount -= 1
+        elif(char == &#39;{&#39;):
+            curlyCount += 1
+        elif(char == &#39;}&#39;):
+            curlyCount -= 1
+        elif(char == &#39;&gt;&#39; or char == &#39;&lt;&#39; or char == &#39;=&#39;):
+            startBool = True
+        if(startBool and char == &#39;=&#39;):
+            totalBool = True
+            startBool = False
+    return (startBool or totalBool) and (curlyCount == 0) and (parenCount == 0)
+
+def checkVar(arr, equalSign):
+    done = False
+    #print(arr[equalSign+1: ])
+    wordsBefore = arr[:equalSign].split()
+    #print(wordsBefore)
+    if(wordsBefore[0] in types.values()):
+        for char in arr[equalSign+1:]:
+            #print(char)
+            if(done):
+                return False
+            if(char == &#39;;&#39;):
+                done = True
+            elif(char == &#39;=&#39;):
+                return False
+            else:
+                pass
+    if(done):
+        return True
+    return False
+
+def main():
+    validStrings = [&#39;while(x &gt;= 4){}&#39;, &#39;if(x&gt;3){}&#39;, &#39;int num = 3;&#39;]
+    nonvalidStrings = [&#39;while(x 4){}&#39;, &#39;if(x&gt;3){&#39;, &#39;car num = 3;&#39;]
+
+    for string in validStrings:
+        if(startChecker(string)):
+            print(string + &quot; is valid&quot;)
+        else:
+            print(string + &quot; is not valid&quot;)
+
+    for string in nonvalidStrings:
+        if(startChecker(string)):
+            print(string + &quot; is valid&quot;)
+        else:
+            print(string + &quot; is not valid&quot;)
+
+if __name__ == &#39;__main__&#39;:
+    main()
+</code></pre></div></li>
+<li><p>(10 points) Given the natural constraints of an RDA explain how you would go about the creation of a Statement function in your RDA that would allow statement to either be a while statement, an if statement or an assignment statement.</p>
+
+<ul>
+<li>So to check to see if a statement is either a while, if, or an assignment you would have to check for each case.</li>
+<li>So first if it is a while we could check for a &#39;while&#39; keyword, if we find it then we know it is a while and we must have some sort of &#39;(&#39; + <bool> + &#39;)&#39;</li>
+<li>Then if we do not find a &#39;while&#39; keyword we would check to see if we have an &#39;if&#39; keyword. If we do, then again we would check to have &#39;(&#39; + <bool> + &#39;)&#39;</li>
+<li>And then if we want to know if it is an assignment statement then we must assume that none of the keywords were found and instead we have a variable name that is valid, not a float or a reserved word or anything like that, followed be a &#39;=&#39; and then a valid value. This is so that we do not have something like &#39;var = @##$&#39; which would be totally incorrect</li>
+<li>And eventually if we want to know what type of variable it is we would take whatever value it has and run it through our lexical analyzer</li>
+</ul></li>
+<li><p>(10 points) Perl allows both static and a kind of dynamic scoping. Write a Perl program that uses both and clearly shows the difference in effect of the two. Explain clearly the difference between the dynamic scoping described in this chapter and that implemented in Perl.</p>
+
+<ul>
+<li>In my program you can see that when we dynamically scope we are grabbing the value from the closest place the variable was declared.</li>
+<li>When we statically scope we are actually grabbing the value from the parent function</li>
+<li>In my program I also explain in the comments</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-none">
+# so from geeks for geeks in order to get dynamically scoped varible we just use keywords
+# my keyword defines a statically scoped local variable
+# and local defines dynamically scoped local variable
+#
+# link: https://www.geeksforgeeks.org/static-and-dynamic-scoping/
+
+print &quot;Hello World!\n&quot;;
+$mainVar = 100;
+$mainVar2 = 100;
+
+sub showVar1
+{
+  return $mainVar;
+}
+sub dynamic
+{
+  # use local which gives us dynamically scoped var
+  # here since we are dynamic we are grabbing from the closest place it was declared
+  local $mainVar = 1;
+  return showVar1();
+}
+
+sub showVar2
+{
+    return $mainVar2;
+}
+sub static
+{
+    # use my which gives us the statically scoped var
+    # here instead of grabbing what is closest to us we are grabbing the value from the &#39;parent&#39; function
+    my $mainVar2 = 1;
+    return showVar2();
+}
+
+print dynamic().&quot; ------ DYNAMIC\n&quot;;
+print static().&quot; ------ STATIC\n&quot;;
+print &quot;---- Jose Diaz ----&quot;;
+</code></pre></div>
+
+<ul>
+<li>Output is also in txt file and here</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-none">Hello World!
+1 ------ DYNAMIC
+100 ------ STATIC
+---- Jose Diaz ----
+</code></pre></div></li>
+</ol>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.python={"triple-quoted-string":{pattern:/"""[\s\S]+?"""|'''[\s\S]+?'''/,alias:"string"},comment:{pattern:/(^|[^\\])#.*/,lookbehind:!0},string:/("|')(?:\\?.)*?\1/,"function":{pattern:/((?:^|\s)def[ \t]+)[a-zA-Z_][a-zA-Z0-9_]*(?=\()/g,lookbehind:!0},"class-name":{pattern:/(\bclass\s+)[a-z0-9_]+/i,lookbehind:!0},keyword:/\b(?:as|assert|async|await|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|pass|print|raise|return|try|while|with|yield)\b/,"boolean":/\b(?:True|False)\b/,number:/\b-?(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,operator:/[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not)\b/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+</script>
+
+
+</body>
+
+</html>
