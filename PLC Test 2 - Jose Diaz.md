@@ -6,6 +6,505 @@
 	- All of the code can be found here: <https://github.com/joseishere/jose_test2>
 	- For all of these problems I wrote them in python and made one file that would read all of my test strings from a file
 	- I have several files so here is all of the files with their respective code and the last file is the one that combines it all
+	
+	```python
+	# tryFloat.py
+	import re
+	
+	def floatChecker(arr):
+	
+	    # I did this one with regex after people started to talk about how they used it in the plc group chat
+	    # of course all of the other ones I didn't do with regex bc they were already done
+	    # really wish i would have done everything with regex
+	    # also I used this website to help me build the regex string
+	    # it is really well made and you should donate to help keep it running
+	    # the website is : https://regex101.com
+	
+	    regexBase = r"(-)?(\d)*(.)?\d+(e|E)?(-)?\d(l|L|f|F)?"
+	
+	    if(re.fullmatch(regexBase, arr)):
+	        # print('is valid')
+	        return True
+	    else:
+	        return False
+	
+	
+	def main():
+	
+	    words = ["23.75", "0.59201E1", "1312221215e-2", "-2.5e-3", "15E-4", "121.0L", "122.0F", "1x0.0F", ".02ef3", "0.01ee1", "0.5e1lf", "69e--2"]
+	
+	
+	    for word in words:
+	        if(floatChecker(word)):
+	            print(word + " is valid")
+	        else:
+	            print(word + " is not valid")
+	
+	
+	if __name__ == "__main__":
+	    main()
+
+	
+	```
+	
+	```python
+	# tryInt.py
+	hex_vals = {
+	    'a':'a',
+	    'A':'A',
+	    'b':'b',
+	    'B':'B',
+	    'c':'c',
+	    'C':'C',
+	    'd':'d',
+	    'D':'D',
+	    'e':'e',
+	    'E':'E',
+	    'f':'f',
+	    'F':'F',
+	}
+	def intChecker(arr):
+	    foundu = False
+	    foundU = False
+	    size = len(arr)
+	    try:
+	        letterFound = arr[2:].find(next(filter(str.isalpha, arr[2:])))
+	    except:
+	        letterFound = -1
+	    #print(letterFound)
+	    if(size < 2):
+	        return False
+	    if(arr[0] == '0' and arr[1] == 'x' or arr[1] == 'X'):
+	
+	        xo={
+	            'a' : 'u',
+	            'b' : 'U',
+	            'c' : 'l',
+	            'd' : 'L'
+	        }
+	
+	        size = len(arr) - 1
+	        suffix = [None] * len(arr)
+	
+	        while(size >= 0):
+	            #print(size)
+	            if(arr[size] in xo.values()):
+	                suffix[size] = arr[size]
+	            else:
+	                break
+	            size -= 1
+	        #print(suffix)
+	        temp = ''
+	        for each in suffix:
+	            if(each is not None):
+	                temp += each
+	        #print(temp)
+	        #print("final size : " + str(size))
+	
+	        if(size != len(arr) - 1):
+	            for char in arr[2:size+1]:
+	                #print(char)
+	                if(char.isnumeric() or char in hex_vals.values()):
+	                    #print('what')
+	                    pass
+	                else:
+	                    print('ere')
+	                    return False
+	            return (True and checkEnd(arr, size+1, 'hex'))
+	        else:
+	            return True
+	
+	    elif(arr[0] == '0' and arr[1] < '8'):
+	        if(letterFound != -1):
+	            for char in arr[2:letterFound+2]:
+	                #print(char)
+	                if(char < '8'):
+	                    pass
+	                else:
+	                    #print('ere')
+	                    return False
+	            return (True and checkEnd(arr, letterFound+2, 'oct'))
+	        else:
+	            return True
+	    elif(arr[0] != 0):
+	        if(letterFound != -1):
+	            for char in arr[2:letterFound+2]:
+	                #print(char)
+	                if(char.isnumeric()):
+	                    pass
+	                else:
+	                    #print('ere')
+	                    return False
+	            return (True and checkEnd(arr, letterFound+2, 'dec'))
+	        else:
+	            return True
+	    else:
+	        return False
+	
+	def checkEnd(arr, startLetter, type):
+	    endString = arr[startLetter:]
+	    #print(endString, "end string")
+	    dec_endings = {
+	        'u':'u',
+	        'l':'l',
+	        'ul':'ul',
+	        'LL':'LL',
+	        'ull':'ull',
+	    }
+	    hex_endings = {
+	        'u':'u',
+	        'l':'l',
+	        'uL':'uL',
+	        'll':'ll',
+	        'uLL':'uLL',
+	    }
+	    oct_endings = {
+	        'u':'u',
+	        'l':'l',
+	        'UL':'UL',
+	        'll':'ll',
+	        'Ull':'Ull',
+	    }
+	
+	
+	    whereToLook = str(type) + "_endings"
+	    #print(whereToLook)
+	    if(type == 'dec'):
+	        if(endString in dec_endings.values()):
+	            #print('checkend returned true')
+	            return True
+	        else:
+	            return False
+	    elif(type == 'hex'):
+	        if(endString in hex_endings.values()):
+	            #print('checkend returned true')
+	            return True
+	        else:
+	            return False
+	    elif(type == 'oct'):
+	        if(endString in oct_endings.values()):
+	            #print('checkend returned true')
+	            return True
+	        else:
+	            return False
+	    else:
+	        return False
+	
+	
+	def main():
+	
+	    words = ["28","4000000024u","2000000022l","4000000000ul","9000000000LL","900000000001ull","024","04000000024u","02000000022l","04000000000UL", "044000000000000ll","044400000000000001Ull", "0x2a", '0XA0000024uu', '0x20000022ll','0XA0000021uLLL','0x8a000000000000lll','0x8A40000000000010uLLL']
+	
+	    for word in words:
+	        if(intChecker(word)):
+	            print(word + " is valid")
+	        else:
+	            print(word + " is not valid")
+	
+	
+	
+	if __name__ == "__main__":
+	    main()
+
+	
+	```
+	
+	```
+	# tryChar.py
+	symbols ={
+	    '~' : '~' ,
+	    '`' : '`' ,
+	    '!' : '!' ,
+	    '@' : '@' ,
+	    '#' : '#' ,
+	    '$' : '$' ,
+	    '%' : '%' ,
+	    '^' : '^' ,
+	    '&' : '&' ,
+	    '*' : '*' ,
+	    '(' : '(' ,
+	    ')' : ')' ,
+	    '-' : '-' ,
+	    '_' : '_' ,
+	    '+' : '+' ,
+	    '=' : '=' ,
+	    '{' : '{' ,
+	    '[' : '[' ,
+	    '}' : '}' ,
+	    ']' : ']' ,
+	    '|' : '|' ,
+	    ':' : ':' ,
+	    ';' : ';' ,
+	    '<' : '<',
+	    ',' : ',',
+	    '>' : '>',
+	    '.' : '.',
+	    '?' : '?',
+	}
+	
+	after_slash = {
+	    'b':'b',
+	    'f':'f',
+	    'n':'n',
+	    'r':'r',
+	    '"':'"',
+	    '\\':'\\',
+	    "'":"'",
+	    'v':'v',
+	    'a':'a',
+	    '?':'?',
+	    'N':'N',
+	    'X':'X',
+	    't':'t',
+	}
+	
+	
+	def charChecker(arr):
+	    # this is very similar to the java string, so took the same algorithm from my java string and adapted it here
+	    # i think we first need to handle the simplest case just making sure that we have the correct open and close
+	    size = len(arr)
+	    count = 0
+	    # need this to handle the /XN
+	    isX = False
+	
+	    # we cant have an empty string or 'a
+	    # and we know we can't have anything more than 5
+	    if(size >= 5 or size < 3):
+	        return False
+	    # print(arr[0], arr[-1])
+	
+	    if((arr[0] == '"' and arr[-1] == '"') or (arr[0] == "'" and arr[-1] == "'")):
+	
+	# don't need to check first letter since we know what it is
+	# now we need to loop through the string and if we have a slash
+	# we need to know that the next number, in this case arr[num] is a valid value
+	# and we need to make sure that we only have an even number of slashes bc \\\
+	# is not valid even though you can have a \ after a \
+	        num = 1
+	        for letter in arr[1:-1]:
+	            #print(letter, "printing letter hereeee")
+	            num +=1
+	            if(letter.isalnum() or letter in symbols.values()):
+	                pass
+	            elif(letter == '\\'):
+	                count+=1
+	                # print(count)
+	                if(isX):
+	                    if(arr[num] != 'N'):
+	                        return False
+	                elif(arr[num] in after_slash.values()):
+	                    #print(str(size) + " size")
+	                    if(arr[num] == 'X'):
+	                        isX = True
+	                    if(num < size-1):
+	                        count+=-1
+	                        #print(count)
+	                elif(arr[num] not in after_slash.values()):
+	                    return False
+	            else:
+	                pass
+	    else:
+	        return False
+	    if(count == 0):
+	        return True
+	
+	    return True
+	
+	
+	def main():
+	
+	    words = ["\'1\'", "\'!\'", "\"$\"", "\'\t\'", "\'\?\'", "\'\\\'", "\'\f\'", "\'\XN\'", "\']\'", "\'n\'", '\'e\"' , "v\'v\'",  '"024"']
+	
+	    for word in words:
+	        if(charChecker(word)):
+	            print(word + " is valid")
+	        else:
+	            print(word + " is not valid")
+	
+	if __name__ == "__main__":
+	    main()
+
+	```
+	
+	```python
+	# tryJava.py
+	after_slash = {
+	    't':'t',
+	    'r':'r',
+	    'n':'n',
+	    'f':'f',
+	    '"':'"',
+	    '\\':'\\',
+	
+	}
+	
+	def javaChecker(arr):
+	    # i think we first need to handle the simplest case just making sure that we have " "
+	    size = len(arr)
+	    count = 0
+	    preCount = 0
+	    if(size < 3):
+	        return False
+	    for letter in arr:
+	        if(letter == '\\'):
+	            preCount+=1
+	
+	    if(arr[0] == "'" and arr[1] != "\\" and arr[2] == "'" and len(arr) == 3 ):
+	        return True
+	# this is so that we know that the string starts and ends with quotation mark
+	    if(arr[0] == '"' and arr[-1] == '"'):
+	# don't need to check first letter since we know what it is
+	# now we need to loop through the string and if we have a slash
+	# we need to know that the next number, in this case arr[num] is a valid value
+	# and we need to make sure that we only have an even number of slashes bc \\\
+	# is not valid even though you can have a \ after a \
+	        num = 1
+	        for letter in arr[1:-1]:
+	            num +=1
+	            if(letter == '\\'):
+	                count+=1
+	                # print(count)
+	                if(arr[num] in after_slash.values()):
+	                    if(num < size-1):
+	                        count+=-1
+	                        # print(count)
+	                if(arr[num] not in after_slash.values()):
+	                    return False
+	    if(count != 0):
+	        return False
+	
+	    return True
+	
+	
+	def main():
+	    # the way this works is if you copy and paste my output into a java compiler, these strings will be valid
+	    # this is due to how the strings go into the function but it is what it is
+	    words = ["'a'", '"string?"', '"string\t"', '"str\\"', '"stri\\"s"', '"st\\"ri\\"s"', "valid??@123", '"val33\\{1!@#$%"']
+	
+	    for word in words:
+	        if(javaChecker(word)):
+	            print(word + " is valid")
+	        else:
+	            print(word + " is not valid")
+	
+	if __name__ == '__main__':
+	    main()
+
+	```
+	
+	```python
+	# tryOperator.py
+	def operatorChecker(op):
+	    # we need to make sure that we get an operator and not empty string
+	    # and that the length of the operator is never more than 4
+	    if(len(op) > 4):
+	        return False
+	
+	    # now we just see what it is
+	
+	    if (op == '+' ):
+	        return True
+	    elif (op == '-' ):
+	        return True
+	    elif (op == '='):
+	        return True
+	    elif (op == '-'):
+	        return True
+	    elif (op == '/'):
+	        return True
+	    elif (op == '*'):
+	        return True
+	    elif (op == '%'):
+	        return True
+	    elif (op == '{'):
+	        return True
+	    elif (op == '}'):
+	        return True
+	    elif (op == '('):
+	        return True
+	    elif (op == ')'):
+	        return True
+	    elif (op == '++'):
+	        return True
+	    elif (op == '--'):
+	        return True
+	    elif (op == '&&'):
+	        return True
+	    elif (op == '||'):
+	        return True
+	    elif (op == '!'):
+	        return True
+	    else:
+	        return False
+	
+	def main():
+	    words = ['+', '-', '/', '%', '+-', '', 'faill', '$$', '1']
+	
+	    for word in words:
+	        if(operatorChecker(word)):
+	            print(word + " is valid")
+	        else:
+	            print(word + " is not valid")
+	
+	if __name__ == "__main__":
+		main()
+
+	```
+	
+	```python
+	# tryPerl.py
+	def perlChecker(word):
+	    if(len(word) < 2):
+	        return False
+	    foundStart = None
+	    for letter in word:
+	        if(letter.isalnum() or letter == '$' or letter == '@' or letter == '%' or letter == '_'):
+	            if (foundStart == None):
+	                if( (letter == "$" or letter == "%" or letter == "@")):
+	                    foundStart = letter
+	                else:
+	                    return False
+	            else:
+	                # now we just need numbers or underscore
+	                if( letter.isalnum() or letter == "_"):
+	                    pass
+	                else:
+	                    return False
+	        else:
+	            return False
+	    return True
+	
+	def main():
+	
+	    words = ['$var_sas', '@another2', '@test', '%another\s', '$test_$', '#testt', '@test#w']
+	    for word in words:
+	        if(perlChecker(word)):
+	            print(word + " is valid")
+	        else:
+	            print(word + " is not valid")
+	
+	
+	if __name__ == "__main__":
+	    main()
+
+	```
+	
+	```python
+	# getWords.py
+	# gets all of the words from a file
+	def fromFile(fileName):
+	    f = open(fileName, 'r')
+	    finalList = f.read().split('\n')
+	    return finalList
+	
+	def main():
+	    print(fromFile('testInputs.txt'))
+	
+	
+	if __name__ == '__main__':
+	    main()
+
+	```
 
 
 2. (9 points) Write three functions in C or C++: one that declares a large array statically, one that declares the same large array on the stack, and one that creates the same large array from the heap. Call each of the subprograms a large number of times (at least 100,000) and output the time  required by each. Explain the results.
