@@ -1347,6 +1347,11 @@
 	- In my program you can see that when we dynamically scope we are grabbing the value from the closest place the variable was declared.
 	- When we statically scope we are actually grabbing the value from the parent function
 	- In my program I also explain in the comments
+	- And in Perl when we are doing local we are assigning a new value for the duration of the function that is calling the local. This variable has the new value until the function finishes. This is done at run time and is called dynamic scoping
+	- my created a variable that is only visible in the current subroutine and as such it is private. This is done at compile time and is called lexical/static scoping. 
+	- This was based off the Perl FAQ. Very informative tbh. [https://perldoc.perl.org/perlfaq7#What's-the-difference-between-dynamic-and-lexical-(static)-scoping?-Between-local()-and-my()?](https://perldoc.perl.org/perlfaq7#What's-the-difference-between-dynamic-and-lexical-(static)-scoping?-Between-local()-and-my()?)
+
+	
 	
 	```
 	
