@@ -1,9 +1,9 @@
-## PLC Test 2 - Jose Diaz
-
+# PLC Test 2 - Jose Diaz
+---
 
 1. (20 points) Create code that allows you to create an ordered list of tokens. This code should take in a file as input and process that file for the following lexemes:
 
-	- All of the code can be found here: <https://github.com/joseishere/jose_test2>
+	- All of the code and other resources like screenshots can be found here: <https://github.com/joseishere/jose_test2>
 	- For all of these problems I wrote them in python and made one file that would read all of my test strings from a file
 	- I have several files so here is all of the files with their respective code and the last file is the one that combines it all
 	
@@ -1336,6 +1336,7 @@
 
 7. (10 points) Given the natural constraints of an RDA explain how you would go about the creation of a Statement function in your RDA that would allow statement to either be a while statement, an if statement or an assignment statement.
 
+	- You know what function to call in an RDA because of the rules that define that RDA. 
 	- So to check to see if a statement is either a while, if, or an assignment you would have to check for each case.
 	- So first if it is a while we could check for a 'while' keyword, if we find it then we know it is a while and we must have some sort of '(' + <bool> + ')'
 	- Then if we do not find a 'while' keyword we would check to see if we have an 'if' keyword. If we do, then again we would check to have '(' + <bool> + ')'
